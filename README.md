@@ -44,8 +44,8 @@ void loop() {
 
 www
 
-const int pinPression = A1;
-const float tensionAlimentation = 5.0;
+
+const int capteur = A1;
 
 void setup() {
   Serial.begin(9600);
@@ -53,34 +53,36 @@ void setup() {
 
 void loop() {
 
-  int valeur = analogRead(pinPression);
+  int valeur = analogRead(capteur);
 
-  float tension = valeur * (tensionAlimentation / 1023.0);
+  float tension = valeur * (5.0 / 1023.0);
 
-  // Calcul de la pression
-  float pression = ((tension / tensionAlimentation) + 0.04) / 0.004;
+  float pressionKPa = ((tension / 5.0) + 0.04) / 0.004;
 
-  // Conversion en hPa
-  float pression_hPa = pression * 10.0;
+  float pressionHpa = pressionKPa * 10.0;
 
   Serial.println("STATION METEO");
 
+  Serial.print("Valeur brute : ");
+  Serial.println(valeur);
+
   Serial.print("Tension : ");
-  Serial.print(tension);
+  Serial.print(tension, 2);
   Serial.println(" V");
 
   Serial.print("Pression : ");
-  Serial.print(pression, 2);
+  Serial.print(pressionKPa, 2);
   Serial.println(" kPa");
 
   Serial.print("Pression : ");
-  Serial.print(pression_hPa, 2);
+  Serial.print(pressionHpa, 2);
   Serial.println(" hPa");
 
   Serial.println("----------------");
 
   delay(2000);
 }
+
 
 
 
