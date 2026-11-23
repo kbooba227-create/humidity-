@@ -42,9 +42,9 @@ void loop() {
 
 
 
+www
 
 const int pinPression = A1;
-
 const float tensionAlimentation = 5.0;
 
 void setup() {
@@ -57,28 +57,30 @@ void loop() {
 
   float tension = valeur * (tensionAlimentation / 1023.0);
 
-  // Calcul de la pression en kPa
+  // Calcul de la pression
   float pression = ((tension / tensionAlimentation) + 0.04) / 0.004;
 
   // Conversion en hPa
   float pression_hPa = pression * 10.0;
 
-  Serial.println("----- STATION METEO -----");
+  Serial.println("STATION METEO");
 
   Serial.print("Tension : ");
   Serial.print(tension);
   Serial.println(" V");
 
   Serial.print("Pression : ");
-  Serial.print(pression);
+  Serial.print(pression, 2);
   Serial.println(" kPa");
 
   Serial.print("Pression : ");
-  Serial.print(pression_hPa);
+  Serial.print(pression_hPa, 2);
   Serial.println(" hPa");
 
-  Serial.println("-------------------------");
+  Serial.println("----------------");
 
   delay(2000);
 }
+
+
 
