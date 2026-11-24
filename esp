@@ -1,0 +1,16 @@
+
+const int luminosite = 34;
+
+void setup() {
+  Serial.begin(115200);
+}
+
+void loop() {
+  int valeur = analogRead(luminosite);
+
+  Serial.print("Luminosite : ");
+  Serial.print(valeur);
+  Serial.println(" / 4095");
+
+  delay(1000);
+}
