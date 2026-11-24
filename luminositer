@@ -1,0 +1,17 @@
+
+const int capteurLuminosite = A0;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+
+  int luminosite = analogRead(capteurLuminosite);
+
+  Serial.print("Luminosite : ");
+  Serial.print(luminosite);
+  Serial.println(" / 1023");
+
+  delay(1000);
+}
